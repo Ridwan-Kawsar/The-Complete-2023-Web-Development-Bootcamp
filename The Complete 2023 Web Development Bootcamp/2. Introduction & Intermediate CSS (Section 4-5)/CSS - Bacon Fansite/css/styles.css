@@ -1,0 +1,28 @@
+/***TAG SELECTORS***/
+h1 {
+    color: blue;
+}
+
+img:hover {
+    background-color: red;
+}
+
+/***CLASS SELECTORS***/
+.bacon {
+    background-color: yellow;
+}
+
+.broccoli {
+    background-color: orange;
+}
+
+.circular{
+    border-radius: 100%;
+}
+
+/***ID SELECTORS***/
+#heading {
+    color: red;
+}
+
+/*--Class and ID Selectors overrides Tag Selectors since it's more specific*/
