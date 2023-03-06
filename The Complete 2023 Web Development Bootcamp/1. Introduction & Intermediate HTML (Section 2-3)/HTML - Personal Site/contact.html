@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Details</title>
+</head>
+
+<body>
+    <h3>Contact Details</h3>
+    <p>
+        Address:<br>
+        48 Kennet House<br>
+        Church Street<br>
+        London<br>
+        NW8 8HB
+    </p>
+
+    <p>
+        Mobile: 07950869624<br>
+        Email: Ridwan_kawsar@hotmail.co.uk<br>
+    </p>
+    <hr>
+
+    <fieldset>
+        <h3>Registration Form</h3>
+        <form action="mailto:ridwan_kawsar@hotmail.co.uk" method="post" enctype="text/plain">
+            <p>
+                <label>
+                    First Name:
+                    <input type="text" name="First Name" required>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Last Name:
+                    <input type="text" name="Last Name" required>
+                </label>
+            </p>
+            <p>
+                <label>
+                    DOB:
+                    <input type="date" name="Date Of Birth" required>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Email:
+                    <input type="email" name="Email Address" required>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Password:
+                    <input type="password" name="Password" required>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Gender:
+                    <input type="radio" name="Gender" value="Male">Male
+                    <input type="radio" name="Gender" value="Female">Female
+                </label>
+            </p>
+            <p>
+                <label>
+                    Mobile Number:
+                    <input type="tel" name="Mobile Number" required>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Message:
+                    <textarea name="Message" cols="20" rows="2"></textarea>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Please check to confirm you are human
+                    <input type="checkbox" name="Human Confirmation" value="yes" required>
+                </label>
+            </p>
+            <p>
+                <input type="submit">
+                <input type="reset">
+            </p>
+        </form>
+    </fieldset>
+</body>
+
+</html>
