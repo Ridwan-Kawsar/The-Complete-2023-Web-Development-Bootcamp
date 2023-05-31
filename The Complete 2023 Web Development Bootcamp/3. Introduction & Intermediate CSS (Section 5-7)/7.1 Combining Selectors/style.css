@@ -1,0 +1,36 @@
+/* Write your code here: */
+
+/* Group Selector (Separated by ",") */
+h1, h2 {
+    color: blueviolet;
+}
+
+/* Parent > Child Selector (Separated by ">") */
+/* Can only be one level from one another */
+.box > p {
+    color: firebrick;
+}
+
+/* Other Alternatives for the Parent > Child Selectors (Lines 8-11):
+.box > .done
+div > .done
+div > p */
+
+/* Ancestor Descendant Selector (Separated by spacing) */
+/* Descendants be of any level as long as its within the enclosing tags of it's ancestor */
+.box li {
+    color: blue;
+}
+
+/* Chain Selector (No separation) */
+/* Chaining = Apply where ALL selectors are true, if you chain an element, make sure you start with it in your chain
+i.e. h1.className#id */
+li.done {
+    color: seagreen;
+}
+
+/* Combining Combiners */
+/* Syntax for Ancestor & Chain Selectors: selector selectorselector */
+ul p.done {
+    font-size: 0.5rem;
+}

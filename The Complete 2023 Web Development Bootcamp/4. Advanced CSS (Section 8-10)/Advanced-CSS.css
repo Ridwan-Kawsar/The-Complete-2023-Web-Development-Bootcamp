@@ -1,0 +1,511 @@
+/** SECTION 8 - ADVANCED CSS **/
+
+/* CSS Display Property */
+{ 
+    display: block; /* The element takes up a entire full width */
+    display: inline; /* The element takes up the width of its content NOTE: Cannot set width/height of inline elements*/
+    display: inline-block; /* Inline (allows elements to go in the same line),  Block (allows us to set height & width of elements */
+    display: none; /* Makes the element on screen disappear */
+}
+
+/* CSS Float Property - Wraps text around an element */
+{
+    float: left/right; /* Sets an element to float on the left/right */
+    clear: left/right/both; /* Clears the float rules i.e. wrapping text around an element */
+}
+
+/* Responsiveness - Making websites look good on all screen sizes */
+Responsiveness is acheived by:
+1. Media Queries
+
+{
+    @media (min-width: 600px) and (max-width: 900px) {
+        /* Applies CSS styles for screen sizes 600px and higher */
+        /* Applies CSS styles for screen sizes up to 900px */
+    }
+
+    @media print (orientation: landscape) {
+        /* Applies CSS styles for when the website needs to be printed / give a different layout */
+    }
+}
+
+2. CSS Grid
+3. CSS Flexbox
+4. External Frameworks; Bootstrap, MUI, Foundation etc..
+
+
+
+/** SECTION 9 - CSS FLEXBOX **/
+
+/* Display: Flex */
+
+Flexbox is used for an overall page structure (layout).
+Flexbox is declared on the container (that contains divs) and is targetted in CSS as follows
+
+.container {
+    display: flex / inline-flex;
+    gap: 10px; /* Creates a 10px gap between each div */
+}
+
+/* Flex Direction (Default direction set to row)*/
+
+{
+    flex-direction: row/row-reverse; /* main-axis (left to right), cross-axis -perpendicular to main-axis (top to bottom) */
+    flex-direction: column/column-reverse; /* main-axis (top to bottom), cross-axis -perpendicular to main-axis (right to left) */
+    /* NOTE: flex-direction is set on the parent (container) */
+
+    flex-basis: 100px; /* Increases along the main-axis by 100px. 100px width if flex direction = row, 100px height if flex direction = column */
+    /* NOTE: flex-basis has to go on the child selector */
+}
+
+/* Flex Layout (Align, Justify, Wrap) */
+
+/* Source: https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-basics-and-terminology */
+/* Properties for the PARENT (flex container) */
+.container {
+    display: flex / inline-flex;
+    flex-direction: row / row-reverse / column /column-reverse;
+    flex-wrap: nowrap / wrap / wrap-reverse;
+    flex-flow: row nowrap;
+    justify-content: flex-start / flex-end / start / end / left / right / center / space-around / space-between / space-evenly;
+    align-items: stretch / flex-start / start / self-start / flex-end / end / self-end / center / baseline;
+    align-content: normal / flex-start / start / flex-end / end / center / space-between / space-around / space-evenly / stretch;
+    gap / row-gap / column-gap: 100px;
+}
+
+/* display - This defines a flex container; inline or block.
+
+flex-direction - This establishes the main-axis, thus defining the direction, flex items are placed in the flex container.
+
+flex-wrap - Allows the items to wrap as needed with this property. (Main-axis)
+nowrap (default): all flex items will be on one line
+wrap: flex items will wrap onto multiple lines (top to bottom)
+wrap-reverse: flex items will wrap onto multiple lines (bottom to top)
+
+flex-flow = flex-direction & flex-wrap, define the flex container’s main and cross axes. The default value is row nowrap.
+
+justify-content - alignment along the main axis. Helps free space leftover when either all the flex items on a line are inflexible, 
+or are flexible but have reached their maximum size. Used to control the alignment of items when they overflow the line.
+
+align-items - alignment for how flex items are laid out along the cross axis (perpendicular to the main-axis).
+The container height needs to be set, i.e. height: 70vh (vh = viewport height (height of the window that the page is being viewed from)
+stretch (default): stretch to fill the container (still respect min-width/max-width)
+baseline: items are aligned such as their baselines align
+
+align-content - aligns a flex container’s lines within when there is extra space in the cross-axis.
+normal (default): items are packed in their default position as if no value was set.
+Only works when flex wrap = wrap.
+
+gap - controls the space between flex items. */
+
+/* Properties for the CHILD (flex items) */
+.item {
+    order: 1;
+    flex-grow: 2;
+    flex-shrink: 3;
+    flex-basis: auto / 0;
+    flex: none / 0 1 auto; /* flex-grow flex-shrink flex basis (Default value: 0 1 auto); */
+    align-self: auto / flex-start / flex-end / center / baseline / stretch;
+}
+
+/* order - By default, flex items hvae order 0. Order property controls the order in which they appear in the flex container.
+
+flex-grow - dictates what amount of the available space inside the flex container the item should take up.
+If all items have flex-grow = 1, the space in the container will be distributed equally. A value of 2, would take up twice as much of the space.
+
+flex-shrink - the ability for a flex item to shrink if necessary.
+
+flex-basis - the default size of an element before the remaining space is distributed. It can be a length (e.g. 20%, 5rem, 100px)
+If set to 0, the extra space around content isn’t factored in. 
+If set to auto, the extra space is distributed based on its flex-grow value.
+
+flex = flex-grow, flex-shrink and flex-basis. The second and third parameters are optional. 
+The default is 0 1 auto, but if you set it with a single number value, like flex: 5;, that changes the flex-basis to 0%, so it’s like setting [5 1 0%];.
+Recommended to use this shorthand property rather than set the individual properties. The shorthand sets the other values intelligently.
+
+align-self - alignment for individual flex items. */
+
+/* Flex Sizing (Shrinking and Growing) */
+
+Flexbox Algorith to determine flex items size (right to left):
+Content width < Width < flex-basis < min-width (Longest word) /max-width (Longest possible line of text/Everything on one line)
+
+min-width - how small each of the items can shrink.
+max-width - how big each of the items can grow.
+
+if flex-basis: 50px, and max-width: 100px, the flex-basis value will be set.
+if flex-basis: 200px, and max-width: 100px, the max-width value will be set.
+
+if flex-basis: 200px, and min-width: 300px, the min-width value will be set.
+
+https://appbrewery.github.io/flex-layout/
+https://appbrewery.github.io/flexboxfroggy/
+https://appbrewery.github.io/flexbox-sizing-exercise/
+
+
+/** SECTION 10 - CSS GRID (2D Layout System) **/
+
+/* Grid Sizing */
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 1:2 ratio between 2 columns, fr = fractional sizing */
+                         : 200px minmax(400px, 800px); /* Second column has a minimum width of 400px and max width of 800px */
+                         : repeat(2, 200px); /* Repeats column width of 200px twice) */
+    grid-template-rows: 1fr 1fr; /* 1:1 ratio between 2 rows */
+    grid-auto-rows: 50px; /* Automatically sets new rows to the grid system with a 50px height */
+    grid-template: 100px 200px / 400px 800px; /* Shorthand for Rows / Columns */
+    gap: 10px; /* (Grid lines) Gap of 10px between the rows and columns */
+}
+
+https://appbrewery.github.io/grid-sizing/
+
+/*Grid Sizing Exercise*/
+https://appbrewery.github.io/grid-sizing/test.html
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto 400px minmax(200px, 500px);
+    grid-template-rows: 1fr 1fr 2fr;
+    grid-auto-rows: 50px;
+}
+
+/* Grid Item Placement (Layout) */
+
+.container {
+    grid-column: span 2; /* Shorthand version of grid-column-start&end, span 2 = span over 2 columns*/
+    grid-column-start: 2;
+    grid-column-end: 1;
+
+    grid-row: span 2; /* Shorthand version of grid-row-start&end, span 2 = span over 2 rows*/
+    grid-row-start: 3;
+    grid-row-end: 5;
+
+    grid-area: 3 / 2 / 5 / 1; /* 4-Coordinate layout using Grid Column and Grid Row, 
+    Order: row-start/col-start/row-end/col-end (Lines 177-178 and 181-182) 
+    Needs to be applied to all items for it to work */ 
+
+    /* Using grid-area, you can use the coordinates to overlap one item over another */
+
+    order: 1; /* Brings the order for that particular item (right most / bottom most) on the grid. */
+}
+
+https://appbrewery.github.io/gridgarden/
+
+/* Level 1 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+#water {
+    grid-column-start: 3;
+}
+
+/* Level 2 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+#poison {
+    grid-column-start: 5;
+}
+
+/* Level 3 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+#water {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+/* Level 4 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-column-start: 5;
+    grid-column-end: 2;
+}
+
+/* Level 5 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+  }
+  
+#water {
+    grid-column-start: 1;
+    grid-column-end: -2;
+}
+
+/* Level 6 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#poison {
+    grid-column-start: -3;
+}
+
+/* Level 7 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-column-start: 2;
+    grid-column-end: span 2;
+}
+
+/* Level 8 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-column-start: 1;
+    grid-column-end: span 5;
+}
+
+/* Level 9 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-column-start: span 3;
+    grid-column-end: 6;
+}
+
+/* Level 10 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-column: 4 / 6;
+}
+
+/* Level 11 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-column: 2 / span 3;
+}
+
+/* Level 12 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-row-start: 3;
+}
+
+/* Level 13 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-row: 3 / span 3;
+}
+
+/* Level 14 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#poison {
+    grid-column: 2;
+    grid-row: 5;
+}
+
+/* Level 15 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-column: 2 / span 4;
+    grid-row: 1 / span 5;
+}
+
+/* Level 16 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-area: 1 / 2 / 4 / 6;
+}
+
+/* Level 17 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+  }
+  
+#water-1 {
+    grid-area: 1 / 4 / 6 / 5;
+}
+  
+#water-2 {
+    grid-area: 2 / 3 / 5 / 6;
+}
+
+/* Level 18 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+.water {
+    order: 0;
+}
+  
+#poison {
+    order: 1;
+}
+
+/* Level 19 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+.water {
+    order: 0;
+}
+  
+.poison {
+    order: -1;
+}
+  
+/* Level 20 */
+#garden {
+    display: grid;
+    grid-template-columns: 50%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* Level 21 */
+#garden {
+    display: grid;
+    grid-template-columns: repeat(8, 12.5%);
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* Level 22 */
+#garden {
+    display: grid;
+    grid-template-columns: 100px 3em 40%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+/* Level 23 */
+#garden {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+/* Level 24 */
+#garden {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 50px;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+  
+#water {
+    grid-area: 1 / 1 / 6 / 2;
+}
+  
+#poison {
+    grid-area: 1 / 5 / 6 / 6;
+}
+
+/* Level 25 */
+#garden {
+    display: grid;
+    grid-template-columns: 75px 3fr 2fr;
+    grid-template-rows: 100%;
+}
+
+/* Level 26 */
+#garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: repeat(4, 12.5px) 1fr
+}
+  
+#water {
+    grid-column: 1 / 6;
+    grid-row: 5 / 6;
+}
+
+/* Level 27 */
+#garden {
+    display: grid;
+    grid-template: 60% / 200px;
+}
+  
+#water {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* Level 28 */
+#garden {
+    display: grid;
+    grid-template: 1fr 50px / 1fr 4fr;
+}

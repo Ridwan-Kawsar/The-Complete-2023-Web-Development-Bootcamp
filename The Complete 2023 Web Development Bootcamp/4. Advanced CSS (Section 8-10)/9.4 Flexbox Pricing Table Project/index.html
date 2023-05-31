@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Flexbox Pricing Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Sono', sans-serif;
+      background-color: #e9e9e9;
+      text-align: center;
+    }
+
+    .pricing-container {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+    }
+
+    .pricing-plan {
+      min-width: 350px;
+      min-height: 650px;
+      background-color: #fff;
+      margin: 20px 10px;
+      border-radius: 30px 30px 30px 30px;
+    }
+
+    .plan-title {
+      text-transform: uppercase;
+      color: white;
+      height: 100px;
+      font-size: 35px;
+      font-weight: 400;
+      padding-top: 20px;
+      border-radius: 30px 30px 0 0;
+    }
+
+    hr {
+      height: 2px;
+      background-color: #fff;
+      width: 75%;
+      border: 0;
+      margin: 0 auto;
+    }
+
+    .hr2 {
+      background-color: #bababa;
+      width: 40%;
+      margin-bottom: 50px;
+      border: 1px solid #bababa;
+    }
+
+    .gradient-one {
+      background-color: #FFE53B;
+      background-image: linear-gradient(110deg, #FFE53B 0%, #FF2525 74%);
+    }
+
+    .gradient-two {
+      background-color: #80D0C7;
+      background-image: linear-gradient(110deg, #80D0C7 0%, #036dac 50%, #0d17de 100%);
+    }
+
+    .gradient-three {
+      background-color: #0093E9;
+      background-image: linear-gradient(110deg, #0093E9 0%, #80D0C7 100%);
+    }
+
+    .plan-price {
+      margin: 50px 10px 20px;
+      font-size: 65px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .dollar-sign {
+      color: #3f3f40;
+      font-size: 50px;
+      font-weight: 400;
+      position: absolute;
+      left: 35px;
+      bottom: 25px;
+    }
+
+    .month {
+      color: #a5a4a4;
+      font-size: 20px;
+      font-weight: 400;
+      position: absolute;
+      right: 35px;
+      top: 50px;
+    }
+
+    .first .dollar-sign {
+      left: 55px;
+    }
+
+    .first .month {
+      right: 55px;
+    }
+
+    .plan-features {
+      color: #8e8e8ea1;
+    }
+
+    .plan-features>li {
+      list-style-type: none;
+      margin: 20px auto;
+      text-align: left;
+    }
+
+    .plan-button {
+      margin-top: 25px;
+      text-transform: uppercase;
+      color: white;
+      border-radius: 10px;
+      border: none;
+      height: 40px;
+      width: 100px;
+      font-size: 20px;
+    }
+
+    /* Hint: What can you do with a media query and flexbox? */
+    @media (max-width: 1126px) {
+      .pricing-container {
+        flex-flow: column nowrap;
+        align-items: center;
+        height: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pricing-container">
+    <div class="pricing-plan">
+      <div class="plan-title gradient-one">Basic
+        <hr>
+      </div>
+      <div class="plan-price first"><span class="dollar-sign">$</span>9.99<span class="month">/mo</span></div>
+      <hr class="hr2">
+      <ul class="plan-features">
+        <li>✅ 10GB Storage</li>
+        <li>✅ 1 User</li>
+        <li>🚫 Support</li>
+      </ul>
+      <button class="plan-button gradient-one">Sign Up</a>
+    </div>
+    <div class="pricing-plan">
+      <div class="plan-title gradient-two">Standard
+        <hr>
+      </div>
+      <div class="plan-price"><span class="dollar-sign">$</span>19.99<span class="month">/mo</span></div>
+      <hr class="hr2">
+      <ul class="plan-features">
+        <li>✅ 50GB Storage</li>
+        <li>✅ 5 Users</li>
+        <li>✅ Phone &amp; Email Support</li>
+      </ul>
+      <button class="plan-button gradient-two">Sign Up</a>
+    </div>
+    <div class="pricing-plan">
+      <div class="plan-title gradient-three">Premium
+        <hr>
+      </div>
+      <div class="plan-price"><span class="dollar-sign">$</span>49.99<span class="month">/mo</span></div>
+      <hr class="hr2">
+      <ul class="plan-features">
+        <li>✅ 100GB Storage</li>
+        <li>✅ 10 Users</li>
+        <li>✅ 24/7 Support</li>
+      </ul>
+      <button class="plan-button gradient-three">Sign Up</a>
+    </div>
+  </div>
+
+</body>
+
+</html>
