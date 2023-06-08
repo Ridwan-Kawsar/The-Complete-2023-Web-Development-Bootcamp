@@ -1,0 +1,63 @@
+https://learngitbranching.js.org/
+
+
+
+Introduction Sequence Solution:
+
+Introduction to Git Commits:
+git commit -m "One"
+git commit -m "Two"
+
+Branching in Git:
+git checkout -b bugFix
+
+Merging in Git:
+git checkout -b bugFix
+git commit -m "abc"
+git checkout main
+git commit -m "def"
+git merge bugFix
+
+Rebase Introduction:
+git checkout -b bugFix
+git commit -m "123"
+git checkout main
+git commit -m "456"
+git checkout bugFix
+git rebase main
+
+
+
+Ramping Up Solution:
+
+Detach yo' HEAD:
+git checkout c4 
+// Detach HEAD by checking out with the commit.
+
+Relative Refs (^):
+git checkout bugFix
+git checkout HEAD^
+// Moving upwards one commit at a time with ^
+// Moving upwards a number of times with ~<num>
+
+Relative Refs #2 (~):
+git checkout C6
+git branch -f main HEAD
+git branch -f bugFix HEAD~4
+git checkout C1
+
+Reversing Changes in Git:
+git reset HEAD~1
+git checkout pushed
+git revert HEAD
+
+
+
+Moving Work Around
+
+Cherry-pick Intro:
+git cherry-pick C3 C4 C7
+//git cherry-pick <Commit1> <Commit2> <...>
+
+Interactive Rebase Intro:
+git rebase -i HEAD~4
