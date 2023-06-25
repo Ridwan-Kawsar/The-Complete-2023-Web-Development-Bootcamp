@@ -1,4 +1,4 @@
-//366. What is React?
+//365. What is React?
 
 // 1. React is a JavaScript library for building user interfaces. (Front-End framework)
 // 2. The core concept of React is creating reusable and composable components.
@@ -23,7 +23,7 @@
 
 
 
-// 369. Introduction to JSX and Babel
+// 368. Introduction to JSX and Babel
 
 // 3. It is a syntax extension that allows us to write XML-like syntax for our React components.
 // 4. JSX may look like HTML, but it is not exactly the same. It is a way to define elements in React.
@@ -83,7 +83,7 @@ root.render(
 
 
 
-// 371. Javascript Expressions in JSX & ES6 Template Literals
+// 370. Javascript Expressions in JSX & ES6 Template Literals
 
 const fname = "Ridwan";
 const lname = "Kawsar";
@@ -98,7 +98,7 @@ let currentYear = date.getFullYear(); //Tapping into the getFullYear() method gi
 
 
 
-// 373. JSX Attributes & Styling React Elements
+// 372. JSX Attributes & Styling React Elements
 
 // Adding styles via classes in HTML files ...
 root.render(
@@ -142,7 +142,7 @@ const customStyle = {
 
 
 
-// 376. React Components
+// 375. React Components
 // 1. React components are the building blocks of React applications.
 // 2. Components can be either functional or class components.
 // 3. Functional components are simpler and easier to write, while class components offer more functionality and flexibility.
@@ -216,3 +216,128 @@ function App() {
 }
 
 export default App;
+
+
+
+// 377. Javascript ES6 - Import, Export and Modules
+
+// To export mulitple functions within a file e.g.
+const pi = 3.1415962;
+
+function doublePi() {
+  return pi * 2;
+}
+
+function triplePi() {
+  return pi * 3;
+}
+
+export default pi; // Default export
+export { doublePi, triplePi }; // Non-default exports written inside {}.
+
+
+// To import multiple functions..
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import pi, { doublePi, triplePi } from "./math"; // import default then a comma followed by the non default exports.
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <ul>
+    <li>{pi}</li>
+    <li>{doublePi()}</li> // Since doublePi and triplePi are functions, using ()'s, returns a value.
+    <li>{triplePi()}</li>
+  </ul>
+);
+
+// You can import everything from a file..
+
+import * as pi from "./math"; // Imports everything from the entire module (./math)
+
+root.render(
+    // Since * is imported from pi, you will need to begin with "pi."" to tap into the methods and functions.
+    <ul>
+      <li>{pi.default}</li>
+      <li>{pi.doublePi()}</li> 
+      <li>{pi.triplePi()}</li>
+    </ul>
+);
+console.log(pi); 
+// Outputs: {default: 3.1415962, doublePi: ƒ doublePi(), triplePi: ƒ triplePi()}
+// default: 3.1415962
+// doublePi: ƒ doublePi() {}
+// triplePi: ƒ triplePi() {}
+
+
+
+//379. [Windows]​ Local Environment Setup for React Development
+
+// Steps to start creating React Apps
+//1. Check Node is up-to date; 
+node --version       
+// Updating node: 
+npm install -g npm@latest
+
+
+//2. Create React App: https://create-react-app.dev/docs/getting-started
+// https://react.dev/learn/start-a-new-react-project
+npx create-react-app my-app //Installs react, react-dom and react-scripts.. react-script lets you run react apps locally.
+
+
+//3. Run the app
+cd my-app
+BROWSER=chrome npm start //Opens the app on Google Chrome
+
+
+//4. Delete unneccesary files from app
+public folder // Keep index.html, 
+scr folder // Keep index.js, .gitignore, package.json and package-lock.json files.
+
+
+//5. Delete excess content within index.html and index.js
+
+//index.html boilerplate:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>React App</title>
+</head>
+
+<body>
+  <script src="../src/index.js" type="text/jsx"></script>
+  <div id="root"></div>
+</body>
+
+</html>
+
+//index.js boilerplate:
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <App />
+);
+
+
+//6. Removing Errors in Terminal: 
+// babel-preset-react-app is part of the create-react-app project, which is not maintianed anymore. It is thus unlikely that this bug willever be fixed. 
+// Add "@babel/plugin-proposal-private-property-in-object" to your devDependencies to work around this error. This will make this message go away.
+npm install --save-dev @babel/plugin-proposal-private-property-in-object
+
+
+//7. Newer Versions of Node Troubleshooting
+// In some case, some of the packages included in the starting files might be incompatible with your version of Node.
+// To fix this, use a package called npm-check-updates to update the listed dependencies' versions inside the starting files.
+npm install -g npm-check-updates
+ncu -u
+npm install
+npm start
+
+
+// React Support Page if you get stuck
+https://react.dev/community
+
