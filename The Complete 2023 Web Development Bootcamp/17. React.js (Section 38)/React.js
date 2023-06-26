@@ -118,14 +118,14 @@ root.render(
 
 
 
-    // 374. Inline Styling for React Elements
-    < h1 style = "color: red" > Heading</h1 >; // Inline CSS styling inside HTML
+// 374. Inline Styling for React Elements
+<h1 style = "color: red">Heading</h1>; // Inline CSS styling inside HTML
 
 // For Inline styling in JS, the value needs to be given as a JS object and not a string ("color:red").
 // JS Object: { key : "value" } pair.. 
 { color: "red" };
 
-<h1 style={*** JS - Object **}>Heading</h1>; // To inject JS into a HTML element in JSX, first it needs to be wrapped inside a set of curly braces{}
+<h1 style={ JavaScript Object }>Heading</h1>; // To inject JS into a HTML element in JSX, first it needs to be wrapped inside a set of curly braces{}
 <h1 style={{ color: "red" }}>Heading</h1>; // Inline styling for a HTML element in JSX using JS.
 
 https://www.w3schools.com/cssref/index.php
@@ -138,7 +138,7 @@ const customStyle = {
     fontWeight: "900"
 }
 
-    < h1 style = { customStyle } > Heading</h1>; // Can also assign a JS object to a const and implement the inline css style.
+<h1 style={ customStyle }>Heading</h1>; // Can also assign a JS object to a const and implement the inline css style.
 
 
 
@@ -180,15 +180,6 @@ function Heading() {
 export default Heading; // Exporting statement, allowing the component to be exported to whichever file needs it.
 
 
-// Inside "index.js" file..
-import Heading from "./Heading"
-// import the component as such
-
-// And put the function "Heading" into the root.render() as HTML tag(s).. i.e
-root.render(
-    // <Heading></Heading>
-    <Heading /> //Best Practice
-)
 
 // Most React Apps have a custom component called "App" inside their index.js, the App.jsx houses all the React Components. 
 
@@ -209,7 +200,7 @@ import List from "./List";
 function App() {
   return (
     <div>
-      <Heading />
+      <Heading /> 
       <List />
     </div>
   );
@@ -340,4 +331,3 @@ npm start
 
 // React Support Page if you get stuck
 https://react.dev/community
-
