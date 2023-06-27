@@ -334,7 +334,7 @@ https://react.dev/community
 
 
 
-//384. React Props
+// 384. React Props
 
 // 1. Props (short for "properties") are a way to pass data from a parent component to a child component in React.
 // 2. Props are read-only, meaning that the child component cannot modify its props.
@@ -385,3 +385,42 @@ root.render(
     />
   </div>
 );
+
+
+
+// 386. React DevTools
+Chrome developer tools -> components
+
+
+
+// 387. Mapping Data to Components​
+import React from "react";
+import Card from "./Card";
+import contacts from "../contacts";
+
+function createCard(contact) { //Passing in a single contact from the contacts array
+  return ( //Returning a Custom Card component
+    <Card
+      key={contact.id} //To get rid of the "Each child in a list should had a unique "key" prop warning, simply state a key prop which is unique.
+      //Note: this key prop cannot be tapped into for use. To tap into id properties, create a new custom prop (as below)
+      id={contact.id}
+      name={contact.name}
+      img={contact.imgURL}
+      tel={contact.phone}
+      email={contact.email}
+      // We are able to get hold of the input's (contact) properties
+    />
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <h1 className="heading">My Contacts</h1>
+      {contacts.map(createCard)} 
+      //By tapping into the contacts array, we can call the map function and inside the (), we pass in another function, createCard in this case.
+      //This is known as functional programming - functions within a function.
+      //The map function loops through this array of contacts and passes the entire element as the contact {id, name, imgURL, phone, email} in the function above
+    </div>
+  );
+}
