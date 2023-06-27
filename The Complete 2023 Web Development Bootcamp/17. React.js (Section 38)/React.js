@@ -331,3 +331,57 @@ npm start
 
 // React Support Page if you get stuck
 https://react.dev/community
+
+
+
+//384. React Props
+
+// 1. Props (short for "properties") are a way to pass data from a parent component to a child component in React.
+// 2. Props are read-only, meaning that the child component cannot modify its props.
+// 3. Props are passed to a component as an object, where the keys represent the prop names and their values represent the data being passed.
+// 4. Props can be used to customize the behavior and appearance of a component.
+// 5. Props are accessed in a component using the `this.props` syntax.
+// 6. Default props can be defined for a component using the `defaultProps` property.
+// 7. PropTypes is a type checking library for React that can be used to validate the types of props being passed to a component.
+// 8. PropTypes can be used to ensure that props have the correct type, shape, and presence.
+// 9. Props can be validated using a separate PropTypes object or by using inline PropTypes.
+// 10. PropTypes can help catch errors early in the development process and improve code reliability.
+// 11. Props can also be passed from one child component to another through their parent component.
+// 12. Props can be used to conditionally render elements or change the behavior of a component based on external data.
+// 13. Props can be used to pass callback functions from a parent component to a child component.
+// 14. Callback functions passed as props can be used to communicate between child and parent components in React.
+// 15. Props are a key concept in React and are used extensively in the development of React applications.
+// 16. Props are a fundamental building block of React and should be used thoughtfully and deliberately.
+// 17. Understanding props is essential to building high-quality React applications that are easy to maintain, extend, and debug.
+// 18. Props can be used with other React concepts, such as state and lifecycle methods, to create powerful and dynamic user interfaces.
+// 19. Props are a core concept of React programming and should be studied and mastered by all React developers.
+// 20. Mastery of props is essential to building scalable, maintainable, and reliable React applications that meet the needs of users.
+
+function Card(props) { //Passing "props" input through the "Card" component
+  
+  console.log(props); //Outputs key value pairs defined in the custom-made components {name: " ", image: " ", tel: " ", email: " "}
+
+  return (
+    <div>
+      <h2>{props.name}</h2>
+      <img src={props.image} alt="avatar_img" />
+      <p>{props.tel}</p>
+      <p>{props.email}</p>
+    </div>
+  );
+}
+
+root.render(
+  <div>
+    <h1>My Contacts</h1>
+    <Card //Custom-made components (Begins with a capital letter)
+      name="Chuck Norris"
+      image="https://i.pinimg.com/originals/e3/94/47/e39447de921955826b1e498ccf9a39af.png"
+      tel="+918 372 574"
+      email="gmail@chucknorris.com"
+      // these attributes is like a JavaSript object with key : value pairs, 
+      // and this object gets sent over as the props object (the input from the function above) 
+      // which you can then tap into its properties
+    />
+  </div>
+);
