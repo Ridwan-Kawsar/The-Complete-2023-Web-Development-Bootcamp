@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 //new Date(year, month, day, hours, minutes, seconds, milliseconds);
-const date = new Date(2023, 5, 18, 18);
+const date = new Date(2023, 5, 18, 19);
 var time = date.getHours(); //Gets hours by tapping into the date method.
 var message;
 const timeStyle = {

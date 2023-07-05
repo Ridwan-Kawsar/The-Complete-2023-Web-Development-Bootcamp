@@ -9,6 +9,4 @@ const customStyle = {
   fontSize: "70px"
 };
 
-root.render(
-  <h1 style={customStyle}>Hello World!</h1>
-);
+root.render(<h1 style={customStyle}>Hello World!</h1>);
