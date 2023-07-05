@@ -424,3 +424,98 @@ function App() {
     </div>
   );
 }
+
+
+
+// 389. Javascript ES6 Map/Filter/Reduce
+
+// ForEach vs Map
+var numbers = [3, 56, 2, 48, 5];
+var doubledNumbers = [];
+
+numbers.forEach(function(input) {
+  doubledNumbers.push(input * 2);
+});
+
+console.log(doubledNumbers); // Output: [6, 112, 4, 96, 10]
+
+
+// The "map" function makes the code more concise without having to create a new empty array, since the map function already does that;
+var numbers = [3, 56, 2, 48, 5];
+
+const doubledNumbers = numbers.map(function (x) {
+  return x * 2;
+});
+
+console.log(doubledNumbers); // Output: [6, 112, 4, 96, 10]
+// map - Creates a new array by doing something with each item in an array and pushes new items into the array.
+
+
+
+// ForEach vs Filter
+var numbers = [3, 56, 2, 48, 5];
+var newNumbers = [];
+
+numbers.forEach(function (num) {
+  if (num < 10) {
+    newNumbers.push(num);
+  }
+});
+
+console.log(newNumbers); // Output: [3, 2, 5]
+
+
+// Using the filter method..
+var numbers = [3, 56, 2, 48, 5];
+
+const filteredNum = numbers.filter(function (num) {
+  return num > 10;
+});
+
+console.log(filteredNum); // Output: [56, 48]
+// Filter - Creates a new array by keeping the items that return true.
+
+
+
+// ForEach vs Reduce
+var numbers = [3, 56, 2, 48, 5];
+var newNumber = 0;
+
+numbers.forEach(function (currentNumber) {
+  newNumber += currentNumber;
+});
+
+console.log(newNumber); // Output: 114
+
+
+// Using the reduce method..
+var numbers = [3, 56, 2, 48, 5];
+var totalNum = numbers.reduce(function (accumulator, currentNumber) {
+  return accumulator + currentNumber; 
+  //accumulator assigned to the first value in the numbers array for the first iteration.
+  //currentNumber assigned to the second number in the numbers array for the first iteration.
+});
+
+console.log(totalNum); // Output: 114
+// Reduce - Accumulate a value by doing something to each item in an array.
+
+
+// Using the Find method..
+var numbers = [3, 56, 2, 48, 5];
+const newNumbers = numbers.find(function (num) {
+  return num > 10;
+});
+
+console.log(newNumbers); // Output: 56
+// Find - find the first item that matches from an array.
+
+
+
+// Using the FindIndex method..
+var numbers = [3, 56, 2, 48, 5];
+const newNumbers = numbers.findIndex(function (num) {
+  return num > 10;
+});
+
+console.log(newNumbers); // Output: 1 (position of array)
+// FindIndex - find the index of the first item that matches.
