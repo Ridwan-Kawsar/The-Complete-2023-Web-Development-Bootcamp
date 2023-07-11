@@ -519,3 +519,44 @@ const newNumbers = numbers.findIndex(function (num) {
 
 console.log(newNumbers); // Output: 1 (position of array)
 // FindIndex - find the index of the first item that matches.
+
+
+
+// 390. Javascript ES6 Arrow functions
+
+var numbers = [1, 2, 3, 4, 5];
+
+// Basic JS function
+function square (x) {
+  return x * x;
+}
+
+// Function within a Function
+var newNumbers = numbers.map(square);
+console.log(newNumbers); // Outputs: [1, 4, 9, 16, 25]
+
+// Function within a function
+var newNumbers = numbers.map(function square (x) {
+  return x * x;
+});
+console.log(newNumbers); // Outputs: [1, 4, 9, 16, 25]
+
+// Anonymous function within a function
+var newNumbers = numbers.map(function (x) { // the name "square" is removed
+  return x * x;
+});
+console.log(newNumbers); // Outputs: [1, 4, 9, 16, 25]
+
+// Arrow functions 
+var newNumbers = numbers.map( (x) => { // the word function is removed and replaced with a fat arrow; =>
+  return x * x;
+});
+console.log(newNumbers); // Outputs: [1, 4, 9, 16, 25]
+
+var newNumbers = numbers.map((x) => x * x); // Shortened notation
+console.log(newNumbers); // Outputs: [1, 4, 9, 16, 25]
+
+var newNumbers = numbers.map( (x, y) => { // passing in two inputs
+  return x * y;
+});
+console.log(newNumbers); // Outputs: [0, 2, 6, 12, 20]
